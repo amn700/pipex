@@ -1,7 +1,9 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = helper_functions1.c  here_doc.c  main.c  helper_functions0.c  pipex.c
+SRCSB = helper_functions0_bonus.c helper_functions1_bonus.c here_doc_bonus.c main_bonus.c pipex_bonus.c
 OBJS = $(SRCS:.c=.o)
+OBJSB = $(SRCSB:.c=.o)
 NAME = pipex
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -22,8 +24,11 @@ $(GNL):
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus : $(LIBFT) $(OBJSB) $(GNL)
+	$(CC) $(CFLAGS) $(OBJSB) $(LIBFT) $(GNL) -o $(NAME)
+
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(OBJS) $(OBJSB)
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(GNL_DIR) clean
 
