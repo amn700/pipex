@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 18:08:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 14:57:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/26 10:09:48 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen_gnl(const char *s)
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_gnl(const char *s)
 {
 	size_t	i;
 	size_t	size;

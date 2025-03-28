@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 18:08:04 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 14:57:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/26 10:10:09 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char	*ft_copy_after_newline(char *st_buffer);
 size_t	ft_strlen_gnl(const char *s);
 char	*ft_strjoin_gnl(char const *s1, char const *s2);
 int		ft_strchr_gnl(const char *s, int c);
-
+char	*ft_strdup_gnl(const char *s);
 #endif

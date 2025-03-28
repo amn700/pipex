@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:14:46 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 16:17:11 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:54:06 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ int	main(int argc, char **argv, char **envp)
 	{
 		fd[0] = open(argv[1], O_RDONLY);
 		if (fd[0] < 0)
-			return (perror("Input file open failed"), 2);
+			perror("Input file open failed");
 		fd[1] = open(argv[i.end], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		if (fd[1] < 0)
-			return (perror("Output file open failed"), 3);
+			perror("Output file open failed");
 	}
 	pipex(i, fd, &archive);
 	if (i.flag)
 		unlink("here_doc");
+	// close(fd[0]), close(fd[1]), free_matrix(paths);
+	// while(1);
 	return (close(fd[0]), close(fd[1]), free_matrix(paths), 0);
 }

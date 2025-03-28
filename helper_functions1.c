@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:32:04 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 16:15:52 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:34:35 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	setup_execve(char *command, char **paths, char **envp)
 	char	**cmd;
 	char	*file_path;
 
-	cmd = ft_split(command, ' ');
+	cmd = ft_split_pipex(command);
 	if (!cmd)
 		exit(1);
 	else if (!cmd[0])

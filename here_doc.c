@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:50:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:36 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/20 03:44:15 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,10 @@ void	here_doc(t_range *i, int fd[], char **argv)
 	unlink("here_doc");
 	fd[0] = open("here_doc", O_WRONLY | O_CREAT, 0644);
 	if (fd[0] < 0)
-	{
 		perror("Here_doc file open failed");
-		exit(2);
-	}
 	fd[1] = open(argv[i->end], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd[1] < 0)
-	{
 		perror("Output file open failed");
-		exit(2);
-	}
 	read_doc(argv[2], fd);
 	close(fd[0]);
 	fd[0] = open("here_doc", O_RDONLY);

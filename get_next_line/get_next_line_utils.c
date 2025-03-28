@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 18:08:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 14:57:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 05:23:32 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen_gnl(const char *s)
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_gnl(const char *s)
 {
 	size_t	i;
 	size_t	size;
@@ -71,9 +71,9 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	if (!s1)
-		return (ft_strdup(s2));
+		return (ft_strdup_gnl(s2));
 	if (!s2)
-		return (ft_strdup(s1));
+		return (ft_strdup_gnl(s1));
 	size = ft_strlen_gnl(s1) + ft_strlen_gnl(s2);
 	new = malloc(size + 1);
 	if (new == NULL)

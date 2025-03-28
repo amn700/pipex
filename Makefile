@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = helper_functions1.c  here_doc.c  main.c  helper_functions0.c  pipex.c
+SRCS = helper_functions2.c split_pipex.c helper_functions1.c  here_doc.c  main.c  helper_functions0.c  pipex.c
 SRCSB = helper_functions0_bonus.c helper_functions1_bonus.c here_doc_bonus.c main_bonus.c pipex_bonus.c
 OBJS = $(SRCS:.c=.o)
 OBJSB = $(SRCSB:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions0.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:31:52 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/17 20:31:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 08:15:08 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ char	*check_access(char **paths, char *cmd)
 	int		i;
 
 	i = 0;
+	if (access(cmd, X_OK) == 0)
+	{
+		path = ft_strdup(cmd);
+		if (!path)
+			return (NULL);
+		return (path);
+	}
 	while (paths[i])
 	{
 		path = ft_strjoin_pipex(paths[i], cmd);
