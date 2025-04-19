@@ -6,16 +6,14 @@
 /*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:04 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/12 17:46:49 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:15:46 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -42,8 +40,8 @@ void		quotes_check(char *str, int *i, int *count);
 int			count_words(char *str);
 char		*ft_strdup_pipex(char *s);
 char		**ft_split_pipex(char *str);
-void		quote_pipex(char **str, char **matrix, char type, int i);
-void		quotes_check_alloc(char **str, char **matrix, int *i);
+int			quote_pipex(char **str, char **matrix, char type, int i);
+int			quotes_check_alloc(char **str, char **matrix, int *i);
 char		**fill_matrix(char **matrix, char *str);
 void		free_matrix(char **matrix);
 void		here_doc(t_range *i, int fd[], char **argv);
@@ -60,5 +58,7 @@ void		free_matrix(char **matrix);
 int			count_words(char *str);
 void		initialize_pipex_struct(char **argv, char **envp, t_dict *archive);
 void		abort_exit(t_dict *archive, int *fd, int *pipefd, int code);
-void 		close_unused_fd(int fd[]);				
+void		close_unused_fd(int fd[]);
+char		*ft_strdup_pipex(char *str);
+
 #endif

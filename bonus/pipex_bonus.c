@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:27:40 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/28 06:02:59 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/19 02:46:04 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	pipex(t_range i, int fd[], t_dict *archive)
 {
@@ -33,7 +33,7 @@ void	pipex(t_range i, int fd[], t_dict *archive)
 			setup_execve(archive->argv[i.start], archive->paths, archive->envp);
 		}
 		else
-			parent_stup(pipefd, &prev_pipe, fd, pid);
+			parent_setup(pipefd, &prev_pipe, fd);
 		i.start++;
 	}
 	close(prev_pipe);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_functions0.c                                :+:      :+:    :+:   */
+/*   helper_functions0_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 20:31:52 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/17 20:31:53 by marvin           ###   ########.fr       */
+/*   Created: 2025/04/12 16:51:16 by mohchaib          #+#    #+#             */
+/*   Updated: 2025/04/19 02:58:39 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 static char	*copy(char *new, char *s1, char *s2)
 {
@@ -69,6 +69,13 @@ char	*check_access(char **paths, char *cmd)
 	int		i;
 
 	i = 0;
+	if (access(cmd, X_OK) == 0)
+	{
+		path = ft_strdup(cmd);
+		if (!path)
+			return (NULL);
+		return (path);
+	}
 	while (paths[i])
 	{
 		path = ft_strjoin_pipex(paths[i], cmd);

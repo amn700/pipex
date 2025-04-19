@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:54:04 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 16:13:00 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/19 02:45:14 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
-# include "get_next_line/get_next_line.h"
-# include "libft/libft.h"
+# include "../get_next_line/get_next_line.h"
+# include "../libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -38,14 +38,23 @@ typedef struct s_dict
 
 void		set_stdout(int prev_pipe, t_range i, int pipefd[], int fd[]);
 void		setup_execve(char *command, char **paths, char **envp);
-void		parent_stup(int pipefd[], int *prev_pipe, int fd[], pid_t pid);
+void		parent_setup(int pipefd[], int *prev_pipe, int fd[]);
 void		pipex(t_range i, int fd[], t_dict *archive);
 void		read_doc(char *limitter, int fd[]);
-void		here_doc(t_range *i, int fd[], char **argv);
+void		here_doc(t_range *i, int fd[], t_dict *archive);
 char		*check_access(char **paths, char *command);
 char		*find_path(char **envp);
-char		**initialize_pipex_struct(char **argv, char **envp, t_dict *archive,
-				t_range *i);
 void		free_matrix(char **matrix);
+void		abort_exit(t_dict *archive, int *fd, int *pipefd, int code);
 
+void		initialize_pipex_struct(char **argv, char **envp, t_dict *archive,
+				t_range *i);
+int			is_quote(char c);
+int			is_whitespace(char c);
+void		abort_exit(t_dict *archive, int *fd, int *pipefd, int code);
+// void	close_unused_fd(int fd[]);
+char		*ft_strdup_pipex(char *str);
+char		**ft_split_pipex(char *s);
+int			count_words(char *str);
+void		close_unused_fd(int fd[]);
 #endif

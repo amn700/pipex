@@ -1,41 +1,23 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-SRCS = helper_functions2.c split_pipex.c helper_functions1.c  here_doc.c  main.c  helper_functions0.c  pipex.c
-SRCSB = helper_functions0_bonus.c helper_functions1_bonus.c here_doc_bonus.c main_bonus.c pipex_bonus.c
-OBJS = $(SRCS:.c=.o)
-OBJSB = $(SRCSB:.c=.o)
-NAME = pipex
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
-GNL_DIR = ./get_next_line
-GNL = $(GNL_DIR)/gnl.a
+MANDATORY_DIR = mandatory
+BONUS_DIR = bonus
+MANDATORY_EXEC = $(MANDATORY_DIR)/pipex
+BONUS_EXEC = $(BONUS_DIR)/pipex_bonus
 
-all: $(LIBFT)  $(NAME)
+all: $(MANDATORY_EXEC)
 
-$(NAME): $(OBJS) $(LIBFT) $(GNL) 
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) -o $(NAME)
+$(MANDATORY_EXEC):
+	$(MAKE) -C $(MANDATORY_DIR)
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
-
-$(GNL):
-	$(MAKE) -C $(GNL_DIR)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-bonus : $(LIBFT) $(OBJSB) $(GNL)
-	$(CC) $(CFLAGS) $(OBJSB) $(LIBFT) $(GNL) -o $(NAME)
+$(BONUS_EXEC):
+	$(MAKE) -C $(BONUS_DIR)
 
 clean:
-	rm -rf $(OBJS) $(OBJSB)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(GNL_DIR) clean
+	$(MAKE) -C $(MANDATORY_DIR) clean
+	$(MAKE) -C $(BONUS_DIR) clean
 
-fclean: clean
-	rm -rf $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(GNL_DIR) fclean
+fclean:
+	$(MAKE) -C $(MANDATORY_DIR) fclean
+	$(MAKE) -C $(BONUS_DIR) fclean
 
 re: fclean all
 

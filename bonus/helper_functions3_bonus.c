@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_functions3.c                                :+:      :+:    :+:   */
+/*   helper_functions3_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 20:31:52 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/19 02:37:55 by mohchaib         ###   ########.fr       */
+/*   Created: 2025/04/12 21:56:50 by mohchaib          #+#    #+#             */
+/*   Updated: 2025/04/19 02:54:12 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-void	abort_exit(t_dict *archive, int *fd, int *pipefd, int code)
+void	close_unused_fd(int fd[])
 {
-	if (fd != NULL)
-		close_unused_fd(fd);
-	if (pipefd != NULL)
-		close_unused_fd(pipefd);
-	free_matrix(archive->paths);
-	exit(code);
+	if (fd[0] >= 0)
+		close(fd[0]);
+	if (fd[1] >= 0)
+		close(fd[1]);
 }
 
 char	*ft_strdup_pipex(char *str)

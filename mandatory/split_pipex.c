@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   split_pipex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 08:19:06 by mohchaib          #+#    #+#             */
-/*   Updated: 2025/03/20 20:09:59 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:06:30 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	quote_pipex(char **str, char **matrix, char type, int i)
+static void	free_matrix_abort(char **matrix, int i)
+{
+	while (i >= 0)
+		free(matrix[i--]);
+	free(matrix);
+}
+
+int	quote_pipex(char **str, char **matrix, char type, int i)
 {
 	int	j;
 
@@ -22,30 +29,41 @@ void	quote_pipex(char **str, char **matrix, char type, int i)
 	if ((*str)[j] == type)
 	{
 		matrix[i] = ft_substr(*str, 0, j);
+		if (!matrix[i])
+		{
+			free_matrix_abort(matrix, i - 1);
+			ft_putstr_fd("allocation error\n", 2);
+			return (0);
+		}
 		j++;
 		(*str) += j;
 	}
 	else
 	{
-		perror("closing quote not found !!");
-		exit(1);
+		free_matrix_abort(matrix, i);
+		ft_putstr_fd("closing quote not found\n", 2);
+		return (0);
 	}
+	return (1);
 }
 
-void	quotes_check_alloc(char **str, char **matrix, int *i)
+int	quotes_check_alloc(char **str, char **matrix, int *i)
 {
 	if (**str == 39)
 	{
 		(*str)++;
-		quote_pipex(str, matrix, 39, *i);
+		if (!quote_pipex(str, matrix, 39, *i))
+			return (0);
 		(*i)++;
 	}
 	else if (**str == 34)
 	{
 		(*str)++;
-		quote_pipex(str, matrix, 34, *i);
+		if (!quote_pipex(str, matrix, 34, *i))
+			return (0);
 		(*i)++;
 	}
+	return (1);
 }
 
 char	**fill_matrix(char **matrix, char *str)
@@ -57,36 +75,24 @@ char	**fill_matrix(char **matrix, char *str)
 	{
 		while (*str && is_whitespace(*str))
 			str++;
-		quotes_check_alloc(&str, matrix, &i);
+		if (!quotes_check_alloc(&str, matrix, &i))
+			return (NULL);
 		if (*str && !is_quote(*str) && !is_whitespace(*str))
-			matrix[i++] = ft_strdup_pipex(str);
+		{
+			matrix[i] = ft_strdup_pipex(str);
+			if (!matrix[i - 1])
+			{
+				free_matrix_abort(matrix, i - 1);
+				ft_putstr_fd("allocation error\n", 2);
+				return (NULL);
+			}
+			i++;
+		}
 		while (*str && !is_quote(*str) && !is_whitespace(*str))
 			str++;
 	}
 	matrix[i] = NULL;
 	return (matrix);
-}
-
-char	*ft_strdup_pipex(char *str)
-{
-	int		i;
-	int		size;
-	char	*new;
-
-	size = 0;
-	while (!is_whitespace(str[size]) && !is_quote(str[size]) && str[size])
-		size++;
-	new = malloc(size + 1);
-	if (new == NULL)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		new[i] = str[i];
-		i++;
-	}
-	new[size] = '\0';
-	return (new);
 }
 
 char	**ft_split_pipex(char *s)

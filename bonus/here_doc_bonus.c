@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc.c                                         :+:      :+:    :+:   */
+/*   here_doc_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:50:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/20 03:44:15 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/19 02:59:05 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	read_doc(char *limitter, int fd[])
 {
@@ -31,23 +31,21 @@ void	read_doc(char *limitter, int fd[])
 	}
 }
 
-void	here_doc(t_range *i, int fd[], char **argv)
+void	here_doc(t_range *i, int fd[], t_dict *archive)
 {
 	i->start = 3;
 	i->flag = 1;
 	unlink("here_doc");
 	fd[0] = open("here_doc", O_WRONLY | O_CREAT, 0644);
 	if (fd[0] < 0)
-		perror("Here_doc file open failed");
-	fd[1] = open(argv[i->end], O_WRONLY | O_CREAT | O_APPEND, 0644);
+		ft_putstr_fd("Creating Here_doc file failed\n", 2);
+	fd[1] = open(archive->argv[i->end], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd[1] < 0)
-		perror("Output file open failed");
-	read_doc(argv[2], fd);
+		return (ft_putstr_fd("Opening output file failed\n", 2),
+			free_matrix(archive->paths), close(fd[0]), exit(1));
+	read_doc(archive->argv[2], fd);
 	close(fd[0]);
 	fd[0] = open("here_doc", O_RDONLY);
 	if (fd[0] < 0)
-	{
-		perror("Here_doc file open failed");
-		exit(2);
-	}
+		ft_putstr_fd("Creating Here_doc file failed\n", 2);
 }
