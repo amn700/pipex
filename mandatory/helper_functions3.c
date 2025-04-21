@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:31:52 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/19 02:37:55 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:18:22 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strdup_pipex(char *str)
 	while (!is_whitespace(str[size]) && !is_quote(str[size]) && str[size])
 		size++;
 	new = malloc(size + 1);
-	if (new == NULL)
+	if (!new)
 		return (NULL);
 	i = 0;
 	while (i < size)

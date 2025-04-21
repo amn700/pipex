@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:27:53 by mohchaib          #+#    #+#             */
-/*   Updated: 2025/04/12 21:27:59 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:15:50 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	initialize_pipex_struct(char **argv, char **envp, t_dict *archive)
 
 	paths = ft_split(find_path(envp), ':');
 	if (!paths)
-		return (ft_putstr_fd("execve failed\n", 2), exit(1));
+		return (ft_putstr_fd("allocation error\n", 2), exit(1));
 	archive->argv = argv;
 	archive->envp = envp;
 	archive->paths = paths;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:14:46 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/19 02:55:36 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:00:17 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,5 @@ int	main(int argc, char **argv, char **envp)
 				free_matrix(archive.paths), close(fd[0]), exit(1), 1);
 	}
 	pipex(i, fd, &archive);
-	if (i.flag)
-		unlink("here_doc");
 	abort_exit(&archive, fd, NULL, 0);
 }

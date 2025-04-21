@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_pipex_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 08:19:06 by mohchaib          #+#    #+#             */
-/*   Updated: 2025/04/19 02:50:48 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:25:02 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**fill_matrix(char **matrix, char *str)
 		if (*str && !is_quote(*str) && !is_whitespace(*str))
 		{
 			matrix[i] = ft_strdup_pipex(str);
-			if (!matrix[i - 1])
+			if (!matrix[i])
 			{
 				free_matrix_abort(matrix, i - 1);
 				ft_putstr_fd("allocation error\n", 2);

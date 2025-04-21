@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:50:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/19 03:30:11 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:30:41 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,21 @@ static void	read_doc_pipe(const char *limiter, int write_fd)
 	}
 }
 
-void	here_doc(t_range *i, int *fd, t_dict *a)
+void	here_doc(t_range *i, int *fd, t_dict *archive)
 {
 	int	p[2];
 
 	i->start = 3;
-	i->flag = 1;
 	if (pipe(p) < 0)
 		return (ft_putstr_fd("Creating Here_doc file failed\n", 2));
-	fd[1] = open(a->argv[i->end], O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd[1] = open(archive->argv[i->end], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd[1] < 0)
 	{
 		close(p[0]);
 		close(p[1]);
 		return (ft_putstr_fd("Creating Here_doc file failed\n", 2));
 	}
-	read_doc_pipe(a->argv[2], p[1]);
+	read_doc_pipe(archive->argv[2], p[1]);
 	close(p[1]);
 	fd[0] = p[0];
 }

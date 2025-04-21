@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:27:40 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/19 02:59:44 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:27:24 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	close_unused_fd(int fd[])
+{
+	if (fd[0] >= 0)
+		close(fd[0]);
+	if (fd[1] >= 0)
+		close(fd[1]);
+}
 
 static void	close_all_fd(int fd[], int pipefd[])
 {

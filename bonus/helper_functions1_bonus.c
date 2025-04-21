@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions1_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 16:51:22 by mohchaib          #+#    #+#             */
-/*   Updated: 2025/04/19 02:59:26 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/21 06:31:02 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	initialize_pipex_struct(char **argv, char **envp, t_dict *archive,
 {
 	char	**paths;
 
-	i->flag = 0;
 	i->start = 2;
 	paths = ft_split(find_path(envp), ':');
 	if (!paths)
