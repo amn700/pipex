@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions3_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohchaib <mohchaib <mohchaib@student.42    +#+  +:+       +#+        */
+/*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:56:50 by mohchaib          #+#    #+#             */
-/*   Updated: 2025/04/19 02:54:12 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:21:54 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	close_unused_fd(int fd[])
 {
-	if (fd[0] >= 0)
-		close(fd[0]);
-	if (fd[1] >= 0)
-		close(fd[1]);
+	close(fd[0]);
+	close(fd[1]);
 }
 
 char	*ft_strdup_pipex(char *str)

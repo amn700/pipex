@@ -6,7 +6,7 @@
 /*   By: mohchaib <mohchaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 16:51:22 by mohchaib          #+#    #+#             */
-/*   Updated: 2025/04/21 06:31:02 by mohchaib         ###   ########.fr       */
+/*   Updated: 2025/04/26 09:42:32 by mohchaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	set_stdout(int prev_pipe, t_range i, int pipefd[], int fd[])
 {
+	if (prev_pipe < 0 || (fd[1] < 0 && i.start == i.end -1))
+		return ;
 	dup2(prev_pipe, STDIN_FILENO);
 	if (i.start < i.end - 1)
 		dup2(pipefd[1], STDOUT_FILENO);
 	else
 		dup2(fd[1], STDOUT_FILENO);
-	close(pipefd[0]);
-	close(pipefd[1]);
-	if (prev_pipe != fd[0])
-		close(prev_pipe);
+	close_unused_fd(fd);
+	close_unused_fd(pipefd);
 }
 
 void	setup_execve(char *command, char **paths, char **envp)

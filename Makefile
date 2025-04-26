@@ -8,6 +8,8 @@ all: $(MANDATORY_EXEC)
 $(MANDATORY_EXEC):
 	$(MAKE) -C $(MANDATORY_DIR)
 
+bonus: $(BONUS_EXEC)
+
 $(BONUS_EXEC):
 	$(MAKE) -C $(BONUS_DIR)
 
